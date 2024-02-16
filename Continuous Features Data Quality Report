@@ -13,6 +13,18 @@ print(data.head())
 
 
 # Assuming 'data' is your DataFrame and 'feature' is the column for which you want to compute cardinality
+#Age Continous Features Data Quality Report
+count = data['Age'].count()
+print("Count:", count)
+
+missing_count = data['Age'].isnull().sum()  # Count the missing values
+total_count = len(data)  # Total number of rows in the DataFrame
+
+# Calculate the missing percentage
+missing_percentage = (missing_count / total_count) * 100
+
+print("Missing Percentage for", 'Age:', missing_percentage)
+
 cardinality = data['Age'].nunique()
 print("Cardinality:", cardinality)
 
