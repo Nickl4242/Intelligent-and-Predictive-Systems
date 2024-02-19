@@ -1,0 +1,68 @@
+import pandas as pd
+
+# Replace 'file_path.csv' with the path to your CSV file
+
+file_path = 'C:\\Users\\Nickl\\Desktop\\Intelligent and Predictive Systems\\Assignment3\\Assignment3Data.csv'     #change this to data file path of your choice
+
+
+# Read the CSV file into a pandas DataFrame
+data = pd.read_csv(file_path)
+
+
+
+
+count = data['Interests'].count()
+print("Count:", count)
+
+missing_count = data['Interests'].isnull().sum()  # Count the missing values
+total_count = len(data)  # Total number of rows in the DataFrame
+
+# Calculate the missing percentage
+missing_percentage = (missing_count / total_count) * 100
+print("Missing Percentage for", 'Interests:', missing_percentage)
+
+cardinality = data['Interests'].nunique()
+print("Cardinality:", cardinality)
+
+modes = data['Interests'].mode()
+print("Mode values:")
+print(modes)
+
+mode_frequency = data['Interests'].value_counts().loc[modes]
+
+print("Mode values and their frequencies:")
+print(mode_frequency)
+
+# Calculate the total number of entries in the column
+total_entries = len(data['Interests'])
+
+# Calculate the percentage of each mode value
+mode_percentage = (mode_frequency / total_entries) * 100
+
+print("Mode values and their percentages:")
+print(mode_percentage)
+
+
+value_counts = data['Interests'].value_counts()
+
+# Sort the values by their frequencies in descending order
+sorted_values = value_counts.sort_values(ascending=False)
+
+# Find the second mode value (if it exists)
+second_mode = data['Interests'].value_counts().index[4]
+
+print("Second Mode:", second_mode)
+
+second_mode_frequency = data['Interests'].value_counts().iloc[4]
+
+print("Frequency of Second Mode:", second_mode_frequency)
+
+second_mode_frequency = data['Interests'].value_counts().iloc[4]
+
+# Calculate the total number of observations
+total_observations = len(data['Interests'])
+
+# Calculate the percentage of the second mode
+second_mode_percentage = (second_mode_frequency / total_observations) * 100
+
+print("Percentage of Second Mode:", second_mode_percentage)
